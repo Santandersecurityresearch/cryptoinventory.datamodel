@@ -1,0 +1,200 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Santander's Cryptographic Object for CMDB",
+    "description": "A cryptographic object based in CBOM definition, with extra validations",
+    "type": "object",
+    "required": ["metadata"],
+    "properties": {
+        "metadata": {
+            "type": "object",
+            "title": "BOM Metadata Object",
+            "required": ["timestamp","component","properties"],
+            "additionalProperties": false,
+            "properties":{
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "title": "The timestamp of the asset creation"
+                },
+                "component": {
+                    "type": "object",
+                    "required": [
+                        "type",
+                        "name",
+                        "cryptoProperties"
+                    ]            
+                },
+                "properties": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "oneOf": [
+                            { "$ref": "#/definitions/keyProperties" },
+                            { "$ref": "#/definitions/certificateProperties" }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "keyProperties": {
+            "type": "object",
+            "properties": {
+                "purpose": {
+                    "type": "string",
+                    "title": "The usage of the key",
+                    "enum": [
+                        "Master Key File (MFK)",
+                        "Platform Master Key (PMK)",
+                        "Futurex Token Key (FTK)",
+                        "Key Exchange Key (KEK)",
+                        "Backup Encryption Key (BEK)",
+                        "Local Master Key (LMK)",
+                        "Zone Master Key (ZMK) and KEK",
+                        "Terminal Master Key (TMK)",
+                        "Terminal Pin Key (TPK)",
+                        "Card Verification Key (CVK)",
+                        "Card Verification Value 1 (CVV1)",
+                        "Card Verification Value 2 (CVV2)",
+                        "Integrated Circuit Card Verification Value (ICVV)",
+                        "Cardholder Authentication Verification Value (CAVV)",
+                        "Zone Pin Key (ZPK)",
+                        "Master Derivation Key (MDK) - (Auth/Mac/Enc)",
+                        "Unique DEA Key (UDK) - (Auth/Mac/Enc)",
+                        "Pin Verification Key (PVK)",
+                        "Database Master Key",
+                        "Session Key"
+                    ]
+                }
+            },
+            "required": ["purpose"]
+        },
+        "certificateProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "serialNumberCA": {
+                    "type": "string",
+                    "title": "The serial number of the asset",
+                    "pattern": "^([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2}$"
+                },
+                "appIdentifier": {
+                    "title": "The ID in the CMDB of the application that uses this certificate",
+                    "ref": "#/definitions/application"
+                },
+                "fingerPrint": {
+                    "type": "string",
+                    "title": "The fingerprint of the asset",
+                    "pattern": "^([0-9a-fA-F]{2}:){31}[0-9a-fA-F]{2}$"
+                },
+                "fingerPrintAlgorithm": {
+                    "type": "string",
+                    "title": "The algorithm used to generate the fingerprint",
+                    "enum": [
+                        "sha256",
+                        "sha512"
+                    ]
+                },
+                "state": {
+                    "type": "string",
+                    "title": "The state of the certificate",
+                    "enum": [
+                        "pre-operational",
+                        "operational",
+                        "retired",
+                        "suspended",
+                        "revoked",
+                        "destroyed"
+                    ]
+                },
+                "receivedDate": {
+                    "type": "string",
+                    "title": "When was the record created",
+                    "format": "date-time"
+                },
+                "updatedDate": {
+                    "type": "string",
+                    "title": "When was the record updated last time",
+                    "format": "date-time"
+                },
+                "installedDate": {
+                    "type": "string",
+                    "title": "When was the certificate installed",
+                    "format": "date-time"
+                },
+                "availableDate": {
+                    "type": "string",
+                    "title": "When was the certificate available",
+                    "format": "date-time"
+                },
+                "removalDate": {
+                    "type": "string",
+                    "title": "When was the certificate removed",
+                    "format": "date-time"
+                },
+                "revocationReason":{
+                    "type": "string",
+                    "title": "The reason for which the certificate was revoked",
+                    "enum": [
+                        "unspecified",
+                        "keyCompromise",
+                        "affiliationChanged",
+                        "superseded",
+                        "cessationOfOperation",
+                        "privilegeWithdrawn"
+                    ]
+                },
+                "revocationDate": {
+                    "type": "string",
+                    "title": "The date of revocation for the certificate (in case it was revoked)",
+                    "format": "date-time"
+                },
+                "keys":{
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "keyIdentifier": {
+                                "type": "string",
+                                "title": "The ID in the CMDB of another private key associated to this certificate (useful for hybrid certificates)"
+                            },
+                            "keySize": {
+                                "type": "integer",
+                                "title": "The size of this key in bits",
+                                "minimum": 256
+                            },
+                            "algorithm": {
+                                "type": "string",
+                                "title": "The algorithm used to generate this key",
+                                "enum": [
+                                    "ML-DSA",
+                                    "SLH-DSA",
+                                    "ECDSA",
+                                    "EdDSA",
+                                    "RSA",
+                                    "DSA"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "required": [
+                "serialNumberCA",
+                "appIdentifier",
+                "fingerPrint",
+                "fingerPrintAlgorithm",
+                "state",
+                "keys"
+            ]
+        },
+        "application": {
+            "type": "string",
+            "title": "ID in CMDB of an application",
+            "pattern": "^urn:uuid:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        }
+    }
+}

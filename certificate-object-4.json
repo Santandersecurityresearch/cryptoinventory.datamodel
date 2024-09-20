@@ -1,0 +1,57 @@
+{
+    "bomFormat": "CBOM",
+    "specVersion": "1.6",
+    "version": 1,
+    "serialNumber": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891289",
+    "metadata": {
+        "timestamp": "2024-08-15T08:58:36.039Z",
+        "component": {
+            "type": "crypto-asset",
+            "name": "certificate 4",
+            "publisher": "juan.capristan@gruposantander.com",
+            "group": "Blockchain CoE",
+            "cryptoProperties": {
+                "assetType": "certificate",
+                "certificateProperties": {
+                    "subjectName": "C=ES, O=Santander Spain Test, OU=SWIFT Access, CN=Broadridge",
+                    "issuerName": "C=ES, O=Santander Spain Test, OU=SAN PKI, CN=SAN Issuing TEST CA",
+                    "notValidBefore": "Oct 27 12:26:13 2023 GMT",
+                    "notValidAfter": "Apr 27 00:26:43 2024 GMT",
+                    "certificateSignatureAlgorithm": "sha256WithRSAEncryption",
+                    "certificateFormat": "X.509",
+                    "certificateExtensions": ""
+                },
+                "classicalSecurityLevel": 256,
+                "nistQuantumSecurityLevel": 0
+            }
+        },
+        "properties": [
+            {
+                "serialNumberCA": "40:a0:13:88:a4:f0:25:8f:dd:ec:31:3e:f9:87:a6:2d:49:ce:b4:5c",
+                "keys":[
+                    {
+                        "keyIdentifier": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891290",
+                        "keySize": 2048,
+                        "algorithm": "RSA"
+                    },
+                    {
+                        "keyIdentifier": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891292",
+                        "keySize": 2048,
+                        "algorithm": "ML-DSA"
+                    }
+                ],
+                "appIdentifier": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287",
+                "fingerPrint": "38:64:C4:DA:D4:BA:4B:BF:FD:45:35:0F:CC:FB:AC:9B:09:1F:DF:A8:43:71:A4:12:48:6E:BF:65:97:92:19:C7",
+                "fingerPrintAlgorithm": "sha256",
+                "state": "operational",
+                "receivedDate": "2024-08-15T08:58:36.039Z",
+                "updatedDate": "2024-08-15T08:58:36.039Z",
+                "installedDate": "2024-08-15T08:58:36.039Z",
+                "availableDate": "2024-08-15T08:58:36.039Z",
+                "removalDate": "2024-08-15T08:58:36.039Z",
+                "revocationReason": "keyCompromise",
+                "revocationDate": "2024-08-15T08:58:36.039Z"
+            }
+        ]
+    }
+}
