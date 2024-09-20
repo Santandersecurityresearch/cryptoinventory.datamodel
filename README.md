@@ -4,7 +4,7 @@ We are currently using the IBM CBOM main branch, which is integrated into [Cyclo
 
 ## Experiment using "ajv"
 
-"ajv" is the recommended tool in IBM CBOM repository to validate schemas.
+[ajv](https://www.npmjs.com/package/ajv) is the recommended tool to validate schemas.
 
 To install `ajv` as a node library:
 
