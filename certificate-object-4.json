@@ -42,7 +42,6 @@
                         "algorithm": "ML-DSA"
                     }
                 ],
-                "appIdentifier": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287",
                 "fingerPrint": "38:64:C4:DA:D4:BA:4B:BF:FD:45:35:0F:CC:FB:AC:9B:09:1F:DF:A8:43:71:A4:12:48:6E:BF:65:97:92:19:C7",
                 "fingerPrintAlgorithm": "sha256",
                 "state": "operational",
@@ -55,5 +54,12 @@
                 "revocationDate": "2024-08-15T08:58:36.039Z"
             }
         ]
-    }
+    },
+    "components": [
+        {
+            "type": "application",
+            "name": "Fnality",
+            "bom-ref": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287"
+        }
+    ]
 }

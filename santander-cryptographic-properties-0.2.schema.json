@@ -45,6 +45,15 @@
                     }
                 }
             }
+        },
+        "components": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "oneOf": [
+                    {"$ref": "#/definitions/application"}
+                ]
+            }
         }
     },
     "definitions": {
@@ -95,10 +104,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "appIdentifier": {
-                    "title": "The ID in the CMDB of the application that uses this certificate",
-                    "ref": "#/definitions/application"
-                },
                 "fingerPrint": {
                     "type": "string",
                     "title": "The fingerprint of the asset",
@@ -199,7 +204,6 @@
                 }
             },
             "required": [
-                "appIdentifier",
                 "fingerPrint",
                 "fingerPrintAlgorithm",
                 "state",
@@ -207,9 +211,21 @@
             ]
         },
         "application": {
-            "type": "string",
-            "title": "ID in CMDB of an application",
-            "pattern": "^urn:uuid:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+            "type": "object",
+            "title": "ID in CMDB of an application.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "pattern": "^application$"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "bom-ref": {
+                    "type": "string"
+                }
+            },
+            "required": ["type", "name", "bom-ref"]
         }
     }
 }
