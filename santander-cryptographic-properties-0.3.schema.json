@@ -100,14 +100,14 @@
             "type": "object",
             "items": {
                 "oneOf": [
-                    { "$ref": "#/definitions/serialNumber40" }
+                    { "$ref": "#/definitions/serialNumber40" },
+                    { "$ref": "#/definitions/state" }
                 ]
             }
         },
         "certificateProperties": {
             "type": "object",
             "oneOf": [
-                { "$ref": "#/definitions/state" },
                 { "$ref": "#/definitions/managementDate" },
                 { "$ref": "#/definitions/revocationReason" }
             ],
