@@ -36,18 +36,6 @@
         },
         "properties": [
             {
-                "keys":[
-                    {
-                        "keyIdentifier": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891290",
-                        "keySize": 2048,
-                        "algorithm": "RSA"
-                    },
-                    {
-                        "keyIdentifier": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891292",
-                        "keySize": 2048,
-                        "algorithm": "ML-DSA"
-                    }
-                ],
                 "state": "operational",
                 "receivedDate": "2024-08-15T08:58:36.039Z",
                 "updatedDate": "2024-08-15T08:58:36.039Z",
@@ -64,6 +52,36 @@
             "type": "application",
             "name": "Fnality",
             "bom-ref": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287"
+        },
+        {
+            "type": "crypto-asset",
+            "name": "Private Key 1",
+            "bom-ref": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287",
+            "cryptoProperties": {
+                "assetType":"relatedCryptoMaterial",
+                "relatedCryptoMaterialProperties": {
+                    "relatedCryptoMaterialType": "privateKey",
+                    "size": 2048
+                }
+            },
+            "properties": [
+                { "algorithm": "RSA" }
+            ]
+        },
+        {
+            "type": "crypto-asset",
+            "name": "Private Key 2",
+            "bom-ref": "",
+            "cryptoProperties": {
+                "assetType":"relatedCryptoMaterial",
+                "relatedCryptoMaterialProperties": {
+                    "relatedCryptoMaterialType": "privateKey",
+                    "size": 2048
+                }
+            },
+            "properties": [
+                { "algorithm": "ML-DSA" }
+            ]
         }
     ]
 }

@@ -57,7 +57,8 @@
             "minItems": 1,
             "items": {
                 "oneOf": [
-                    {"$ref": "#/definitions/application"}
+                    {"$ref": "#/definitions/applicationRef"},
+                    {"$ref": "#/definitions/keyRef"}
                 ]
             }
         }
@@ -126,7 +127,7 @@
                     "type": "string",
                     "title": "When was the record created",
                     "format": "date-time"
-                },
+                },                
                 "updatedDate": {
                     "type": "string",
                     "title": "When was the record updated last time",
@@ -163,22 +164,43 @@
                     "type": "string",
                     "title": "The date of revocation for the certificate (in case it was revoked)",
                     "format": "date-time"
+                }
+            },
+            "required": [
+                "state"
+            ]
+        },
+        "applicationRef": {
+            "type": "object",
+            "title": "Reference of the application in CMDB. Possibly with an empty reference",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "pattern": "^application$"
                 },
-                "keys":{
+                "name": {
+                    "type": "string"
+                },
+                "bom-ref": {
+                    "type": "string"
+                }
+            },
+            "required": ["type"]
+        },
+        "keyRef": {
+            "type": "object",
+            "title": "Reference to a key. Mainly used to validate the algorithm part. Possibly with an empty reference",
+            "properties":{
+                "properties": {
                     "type": "array",
                     "minItems": 1,
+                    "maxItems": 1,
                     "items": {
                         "type": "object",
-                        "additionalProperties": false,
                         "properties": {
-                            "keyIdentifier": {
+                            "type": {
                                 "type": "string",
-                                "title": "The ID in the CMDB of another private key associated to this certificate (useful for hybrid certificates)"
-                            },
-                            "keySize": {
-                                "type": "integer",
-                                "title": "The size of this key in bits",
-                                "minimum": 256
+                                "pattern": "^crypto-asset$"
                             },
                             "algorithm": {
                                 "type": "string",
@@ -196,27 +218,7 @@
                     }
                 }
             },
-            "required": [
-                "state",
-                "keys"
-            ]
-        },
-        "application": {
-            "type": "object",
-            "title": "ID in CMDB of an application.",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "pattern": "^application$"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "bom-ref": {
-                    "type": "string"
-                }
-            },
-            "required": ["type", "name", "bom-ref"]
+            "required": ["type", "properties"]
         }
     }
 }
