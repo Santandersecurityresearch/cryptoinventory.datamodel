@@ -74,14 +74,15 @@ validate_json() {
 
 # Declare an associative array of schemas
 declare -A schemas
-schemas[SBOM]="santander-cryptographic-properties-0.2.schema.json"
+
 schemas[ALL]=""
 variant="cyclonedx" # ibm | cyclonedx
-
 if [[ "$variant" == "ibm" ]]; then
     schemas[CBOM]="bom-1.4-cbom-1.0.schema.json"
+    schemas[SBOM]="santander-cryptographic-properties-0.2.schema.json"
 else # cyclonedx
     schemas[CBOM]="bom-1.6.schema.json"
+    schemas[SBOM]="santander-cryptographic-properties-0.3.schema.json"
 fi
 
 # Prompt for validation type if not provided
