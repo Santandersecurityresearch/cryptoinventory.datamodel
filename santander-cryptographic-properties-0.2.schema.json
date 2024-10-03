@@ -3,7 +3,7 @@
     "title": "Santander's Cryptographic Object for CMDB",
     "description": "A cryptographic object based in CBOM definition, with extra validations",
     "type": "object",
-    "required": ["metadata"],
+    "required": ["metadata", "components"],
     "properties": {
         "metadata": {
             "type": "object",
@@ -21,8 +21,14 @@
                     "required": [
                         "type",
                         "name",
-                        "cryptoProperties"
+                        "cryptoProperties",
+                        "hashes"
                     ],
+                    "hashes": {
+                        "type": "array",
+                        "title": "The fingerprint(s) of the certificate",
+                        "minItems": 1
+                    },
                     "properties": {
                         "properties": {
                             "type": "array",
@@ -104,19 +110,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "fingerPrint": {
-                    "type": "string",
-                    "title": "The fingerprint of the asset",
-                    "pattern": "^([0-9a-fA-F]{2}:){31}[0-9a-fA-F]{2}$"
-                },
-                "fingerPrintAlgorithm": {
-                    "type": "string",
-                    "title": "The algorithm used to generate the fingerprint",
-                    "enum": [
-                        "sha256",
-                        "sha512"
-                    ]
-                },
                 "state": {
                     "type": "string",
                     "title": "The state of the certificate",
@@ -204,8 +197,6 @@
                 }
             },
             "required": [
-                "fingerPrint",
-                "fingerPrintAlgorithm",
                 "state",
                 "keys"
             ]

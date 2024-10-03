@@ -24,6 +24,12 @@
                 "classicalSecurityLevel": 256,
                 "nistQuantumSecurityLevel": 0
             },
+            "hashes":[
+                {
+                    "alg":"SHA-256",
+                    "content":"3864C4DAD4BA4BBFFD45350FCCFBAC9B091FDFA84371A412486EBF65979219C7"
+                }
+            ],
             "properties": [{
                 "serialNumber":"40:a0:13:88:a4:f0:25:8f:dd:ec:31:3e:f9:87:a6:2d:49:ce:b4:5c"
             }]
@@ -42,8 +48,6 @@
                         "algorithm": "ML-DSA"
                     }
                 ],
-                "fingerPrint": "38:64:C4:DA:D4:BA:4B:BF:FD:45:35:0F:CC:FB:AC:9B:09:1F:DF:A8:43:71:A4:12:48:6E:BF:65:97:92:19:C7",
-                "fingerPrintAlgorithm": "sha256",
                 "state": "operational",
                 "receivedDate": "2024-08-15T08:58:36.039Z",
                 "updatedDate": "2024-08-15T08:58:36.039Z",
