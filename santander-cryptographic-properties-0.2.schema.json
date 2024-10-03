@@ -22,7 +22,17 @@
                         "type",
                         "name",
                         "cryptoProperties"
-                    ]            
+                    ],
+                    "properties": {
+                        "properties": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "$ref": "#/definitions/certificateProperties2"
+                            },
+                            "required": ["serialNumber"]
+                        }
+                    }
                 },
                 "properties": {
                     "type": "array",
@@ -70,15 +80,21 @@
             },
             "required": ["purpose"]
         },
+        "certificateProperties2": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "serialNumber": {
+                    "type": "string",
+                    "title": "The serial number of the asset",
+                    "pattern": "^([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2}$"
+                }
+            }
+        },
         "certificateProperties": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "serialNumberCA": {
-                    "type": "string",
-                    "title": "The serial number of the asset",
-                    "pattern": "^([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2}$"
-                },
                 "appIdentifier": {
                     "title": "The ID in the CMDB of the application that uses this certificate",
                     "ref": "#/definitions/application"
@@ -183,7 +199,6 @@
                 }
             },
             "required": [
-                "serialNumberCA",
                 "appIdentifier",
                 "fingerPrint",
                 "fingerPrintAlgorithm",

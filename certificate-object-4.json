@@ -23,11 +23,13 @@
                 },
                 "classicalSecurityLevel": 256,
                 "nistQuantumSecurityLevel": 0
-            }
+            },
+            "properties": [{
+                "serialNumber":"40:a0:13:88:a4:f0:25:8f:dd:ec:31:3e:f9:87:a6:2d:49:ce:b4:5c"
+            }]
         },
         "properties": [
             {
-                "serialNumberCA": "40:a0:13:88:a4:f0:25:8f:dd:ec:31:3e:f9:87:a6:2d:49:ce:b4:5c",
                 "keys":[
                     {
                         "keyIdentifier": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891290",
