@@ -3,7 +3,7 @@
     "title": "Santander's Cryptographic Object for CMDB",
     "description": "A cryptographic object based in CBOM definition, with extra validations",
     "type": "object",
-    "required": ["metadata"],
+    "required": ["metadata", "components"],
     "properties": {
         "metadata": {
             "type": "object",
@@ -21,8 +21,24 @@
                     "required": [
                         "type",
                         "name",
-                        "cryptoProperties"
-                    ]            
+                        "cryptoProperties",
+                        "hashes"
+                    ],
+                    "hashes": {
+                        "type": "array",
+                        "title": "The fingerprint(s) of the certificate",
+                        "minItems": 1
+                    },
+                    "properties": {
+                        "properties": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "$ref": "#/definitions/certificateProperties2"
+                            },
+                            "required": ["serialNumber"]
+                        }
+                    }
                 },
                 "properties": {
                     "type": "array",
@@ -34,6 +50,16 @@
                         ]
                     }
                 }
+            }
+        },
+        "components": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "oneOf": [
+                    {"$ref": "#/definitions/applicationRef"},
+                    {"$ref": "#/definitions/keyRef"}
+                ]
             }
         }
     },
@@ -70,32 +96,21 @@
             },
             "required": ["purpose"]
         },
+        "certificateProperties2": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "serialNumber": {
+                    "type": "string",
+                    "title": "The serial number of the asset",
+                    "pattern": "^([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2}$"
+                }
+            }
+        },
         "certificateProperties": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "serialNumberCA": {
-                    "type": "string",
-                    "title": "The serial number of the asset",
-                    "pattern": "^([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2}$"
-                },
-                "appIdentifier": {
-                    "title": "The ID in the CMDB of the application that uses this certificate",
-                    "ref": "#/definitions/application"
-                },
-                "fingerPrint": {
-                    "type": "string",
-                    "title": "The fingerprint of the asset",
-                    "pattern": "^([0-9a-fA-F]{2}:){31}[0-9a-fA-F]{2}$"
-                },
-                "fingerPrintAlgorithm": {
-                    "type": "string",
-                    "title": "The algorithm used to generate the fingerprint",
-                    "enum": [
-                        "sha256",
-                        "sha512"
-                    ]
-                },
                 "state": {
                     "type": "string",
                     "title": "The state of the certificate",
@@ -112,7 +127,7 @@
                     "type": "string",
                     "title": "When was the record created",
                     "format": "date-time"
-                },
+                },                
                 "updatedDate": {
                     "type": "string",
                     "title": "When was the record updated last time",
@@ -149,22 +164,43 @@
                     "type": "string",
                     "title": "The date of revocation for the certificate (in case it was revoked)",
                     "format": "date-time"
+                }
+            },
+            "required": [
+                "state"
+            ]
+        },
+        "applicationRef": {
+            "type": "object",
+            "title": "Reference of the application in CMDB. Possibly with an empty reference",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "pattern": "^application$"
                 },
-                "keys":{
+                "name": {
+                    "type": "string"
+                },
+                "bom-ref": {
+                    "type": "string"
+                }
+            },
+            "required": ["type"]
+        },
+        "keyRef": {
+            "type": "object",
+            "title": "Reference to a key. Mainly used to validate the algorithm part. Possibly with an empty reference",
+            "properties":{
+                "properties": {
                     "type": "array",
                     "minItems": 1,
+                    "maxItems": 1,
                     "items": {
                         "type": "object",
-                        "additionalProperties": false,
                         "properties": {
-                            "keyIdentifier": {
+                            "type": {
                                 "type": "string",
-                                "title": "The ID in the CMDB of another private key associated to this certificate (useful for hybrid certificates)"
-                            },
-                            "keySize": {
-                                "type": "integer",
-                                "title": "The size of this key in bits",
-                                "minimum": 256
+                                "pattern": "^crypto-asset$"
                             },
                             "algorithm": {
                                 "type": "string",
@@ -182,19 +218,7 @@
                     }
                 }
             },
-            "required": [
-                "serialNumberCA",
-                "appIdentifier",
-                "fingerPrint",
-                "fingerPrintAlgorithm",
-                "state",
-                "keys"
-            ]
-        },
-        "application": {
-            "type": "string",
-            "title": "ID in CMDB of an application",
-            "pattern": "^urn:uuid:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+            "required": ["type", "properties"]
         }
     }
 }

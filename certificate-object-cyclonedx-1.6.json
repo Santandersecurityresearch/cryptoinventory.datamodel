@@ -1,0 +1,114 @@
+{
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.6",
+    "version": 1,
+    "serialNumber": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891289",
+    "metadata": {
+        "timestamp": "2024-08-15T08:58:36.039Z",
+        "component": {
+            "type": "cryptographic-asset",
+            "name": "certificate in cyclonedx format",
+            "publisher": "juan.capristan@gruposantander.com",
+            "group": "Blockchain CoE",
+            "cryptoProperties": {
+                "assetType": "certificate",
+                "certificateProperties": {
+                    "subjectName": "C=ES, O=Santander Spain Test, OU=SWIFT Access, CN=Broadridge",
+                    "issuerName": "C=ES, O=Santander Spain Test, OU=SAN PKI, CN=SAN Issuing TEST CA",
+                    "notValidBefore": "Oct 27 12:26:13 2023 GMT",
+                    "notValidAfter": "Apr 27 00:26:43 2024 GMT",
+                    "signatureAlgorithmRef": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287",
+                    "certificateFormat": "X.509"
+                }
+            },
+            "hashes":[
+                {
+                    "alg":"SHA-256",
+                    "content":"3864C4DAD4BA4BBFFD45350FCCFBAC9B091FDFA84371A412486EBF65979219C7"
+                }
+            ],
+            "properties": [
+                {
+                    "name": "serialNumber",
+                    "value":"40:a0:13:88:a4:f0:25:8f:dd:ec:31:3e:f9:87:a6:2d:49:ce:b4:5c"
+                },
+                {
+                    "name": "state",
+                    "value": "operational"
+                }
+            ]
+        },
+        "properties": [
+            {
+                "name": "receivedDate",
+                "value": "2024-08-15T08:58:36.039Z"
+            },
+            {
+                "name": "updatedDate",
+                "value": "2024-08-15T08:58:36.039Z"
+            },
+            {
+                "name": "installedDate",
+                "value": "2024-08-15T08:58:36.039Z"
+            },
+            {
+                "name": "availableDate",
+                "value": "2024-08-15T08:58:36.039Z"
+            },
+            {
+                "name": "removalDate",
+                "value": "2024-08-15T08:58:36.039Z"
+            },
+            {
+                "name": "revocationReason",
+                "value": "keyCompromise"
+            },
+            {
+                "name": "revocationDate",
+                "value": "2024-08-15T08:58:36.039Z"
+            }
+        ]
+    },
+    "components": [
+        {
+            "type": "application",
+            "name": "Fnality",
+            "bom-ref": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287"
+        },
+        {
+            "type": "cryptographic-asset",
+            "name": "Private Key 1",
+            "bom-ref": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287",
+            "cryptoProperties": {
+                "assetType":"related-crypto-material",
+                "relatedCryptoMaterialProperties": {
+                    "type": "private-key",
+                    "size": 2048
+                }
+            },
+            "properties": [
+                { 
+                    "name": "algorithm",
+                    "value": "RSA" 
+                }
+            ]
+        },
+        {
+            "type": "cryptographic-asset",
+            "name": "Private Key 2",
+            "cryptoProperties": {
+                "assetType":"related-crypto-material",
+                "relatedCryptoMaterialProperties": {
+                    "type": "private-key",
+                    "size": 2048
+                }
+            },
+            "properties": [
+                { 
+                    "name": "algorithm",
+                    "value": "ML-DSA" 
+                }
+            ]
+        }
+    ]
+}

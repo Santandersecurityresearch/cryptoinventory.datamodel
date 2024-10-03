@@ -65,18 +65,25 @@ validate_json() {
     local file=$2
     echo -e "${GREEN}Validating ${file} against ${schema}${NC}"
     # Add CBOM-specific dependencies when validating CBOM
-    if [[ "$schema" == *"cbom"* ]]; then
-        npx ajv validate --spec=draft7 --validate-formats=false --strict=false -r spdx.schema.json -r jsf-0.82.schema.json -s "$schema" -d "$file" --verbose
+    if [[ "$schema" == "CBOM" ]]; then
+        npx ajv validate --spec=draft7 --validate-formats=false --strict=false -r "spdx.schema-${variant}.json" -r "jsf-0.82.schema-${variant}.json" -s "${schemas[$schema]}" -d "$file" --verbose
     else
-        npx ajv validate --spec=draft7 --validate-formats=false --strict=false -s "$schema" -d "$file" --verbose
+        npx ajv validate --spec=draft7 --validate-formats=false --strict=false -s "${schemas[$schema]}" -d "$file" --verbose
     fi
 }
 
 # Declare an associative array of schemas
 declare -A schemas
-schemas[CBOM]="bom-1.4-cbom-1.0.schema.json"
-schemas[SBOM]="santander-cryptographic-properties-0.2.schema.json"
+
 schemas[ALL]=""
+variant="cyclonedx" # ibm | cyclonedx
+if [[ "$variant" == "ibm" ]]; then
+    schemas[CBOM]="bom-1.4-cbom-1.0.schema.json"
+    schemas[SBOM]="santander-cryptographic-properties-0.2.schema.json"
+else # cyclonedx
+    schemas[CBOM]="bom-1.6.schema.json"
+    schemas[SBOM]="santander-cryptographic-properties-0.3.schema.json"
+fi
 
 # Prompt for validation type if not provided
 if [ -z "$1" ]; then
@@ -108,8 +115,8 @@ fi
 # Perform validations based on the type
 if [ "$validation_type" == "ALL" ]; then
     for type in CBOM SBOM; do
-        validate_json "${schemas[$type]}" "$file_path"
+        validate_json "$type" "$file_path"
     done
 else
-    validate_json "${schemas[$validation_type]}" "$file_path"
+    validate_json "$validation_type" "$file_path"
 fi
