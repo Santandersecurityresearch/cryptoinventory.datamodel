@@ -1,6 +1,7 @@
 # Cryptoinventory Data Model PoC
 
-We are currently using the IBM CBOM main branch, which is integrated into [CycloneDX 1.6](https://github.com/CycloneDX/specification).
+Currently using CycloneDX 1.6 schema [CycloneDX 1.6](https://github.com/CycloneDX/specification).
+This repository has also schemas and objects valid for IBM CBOM (bom-1.4-cbom-1.0.schema.json) for documentation purposes.
 
 ## Experiment using "ajv"
 
