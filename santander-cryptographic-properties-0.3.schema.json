@@ -34,7 +34,7 @@
                             "type": "array",
                             "minItems": 1,
                             "items": {
-                                "$ref": "#/definitions/certificateProperties2"
+                                "$ref": "#/definitions/certificateOwnProperties"
                             },
                             "required": ["serialNumber"]
                         }
@@ -46,7 +46,7 @@
                     "items": {
                         "oneOf": [
                             { "$ref": "#/definitions/keyProperties" },
-                            { "$ref": "#/definitions/certificateProperties" }
+                            { "$ref": "#/definitions/certificateManagementProperties" }
                         ]
                     }
                 }
@@ -96,7 +96,7 @@
             },
             "required": ["purpose"]
         },
-        "certificateProperties2": {
+        "certificateOwnProperties": {
             "type": "object",
             "items": {
                 "oneOf": [
@@ -105,7 +105,7 @@
                 ]
             }
         },
-        "certificateProperties": {
+        "certificateManagementProperties": {
             "type": "object",
             "oneOf": [
                 { "$ref": "#/definitions/managementDate" },
