@@ -36,7 +36,8 @@
                             "items": {
                                 "oneOf": [
                                     { "$ref": "#/definitions/serialNumber40" },
-                                    { "$ref": "#/definitions/state" }
+                                    { "$ref": "#/definitions/state" },
+                                    { "$ref": "#/definitions/x509v3ext_basicConstraints_CA" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -233,6 +234,21 @@
                         "keyCompromise",
                         "administrativeReason"
                     ]
+                }
+            }
+        },
+        "x509v3ext_basicConstraints_CA": {
+            "type": "object",
+            "title": "Basic Constraints - CA",
+            "description": "Specifies wether a certificate can be used as a CA certificate or not",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_basicConstraints_CA$"
+                },
+                "value": {
+                    "type": "boolean",
+                    "title": "The boolean indicating wether the certificate can be used as a CA or not"
                 }
             }
         }
