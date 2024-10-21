@@ -51,6 +51,10 @@
                 {
                     "name": "x509v3ext_subjectAlternativeName",
                     "value": "DNS:test.participate.preprod.fdefi.co.uk"
+                },
+                {
+                    "name": "x509v3ext_authorityKeyIdentifier",
+                    "value": "40a01388a4f0258fddec313ef987a62d49ceb45c"
                 }
             ]
         },

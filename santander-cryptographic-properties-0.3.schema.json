@@ -40,7 +40,8 @@
                                     { "$ref": "#/definitions/x509v3ext_basicConstraints_CA" },
                                     { "$ref": "#/definitions/x509v3ext_keyUsage" },
                                     { "$ref": "#/definitions/x509v3ext_extendedKeyUsage" },
-                                    { "$ref": "#/definitions/x509v3ext_subjectAlternativeName" }
+                                    { "$ref": "#/definitions/x509v3ext_subjectAlternativeName" },
+                                    { "$ref": "#/definitions/x509v3ext_authorityKeyIdentifier" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -71,6 +72,14 @@
         }
     },
     "definitions": {
+        "40BytesHex":{
+            "type": "string",
+            "examples": [
+                "18:C9:09:8E:06:01:9C:25:AF:B5:A3:DB:C0:C9:91:C8:F5:62:1C:C1",
+                "18C9098E06019C25AFB5A3DBC0C991C8F5621CC1"
+            ],
+            "pattern": "^(([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2})|([0-9a-fA-F]{40})$"
+        },
         "keyProperties": {
             "type": "object",
             "properties": {
@@ -170,8 +179,7 @@
                     "pattern": "^serialNumber$"
                 },
                 "value": {
-                    "type": "string",
-                    "pattern": "^([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2}$"
+                    "$ref":"#/definitions/40BytesHex"
                 }
             }
         },
@@ -300,6 +308,20 @@
                     "type": "string",
                     "title": "List of possible names to identify the entity associated with the certificate",
                     "examples": ["DNS:test.participate.preprod.fdefi.co.uk"]
+                }
+            } 
+        },
+        "x509v3ext_authorityKeyIdentifier": {
+            "type": "object",
+            "title": "Extended Property: Authority Key Identix509v3ext_authorityKeyIdentifierfier",
+            "description": "Identifies the public key of the CA that issued the certificate",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_authorityKeyIdentifier$"
+                },
+                "value": {
+                    "$ref":"#/definitions/40BytesHex"
                 }
             } 
         }
