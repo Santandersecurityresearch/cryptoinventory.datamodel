@@ -39,6 +39,10 @@
                 {
                     "name": "x509v3ext_basicConstraints_CA",
                     "value": false
+                },
+                {
+                    "name": "x509v3ext_keyUsage",
+                    "value": "Digital signature, Key encipherment"
                 }
             ]
         },

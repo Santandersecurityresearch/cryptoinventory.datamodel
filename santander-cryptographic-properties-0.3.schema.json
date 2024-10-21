@@ -37,7 +37,8 @@
                                 "oneOf": [
                                     { "$ref": "#/definitions/serialNumber40" },
                                     { "$ref": "#/definitions/state" },
-                                    { "$ref": "#/definitions/x509v3ext_basicConstraints_CA" }
+                                    { "$ref": "#/definitions/x509v3ext_basicConstraints_CA" },
+                                    { "$ref": "#/definitions/x509v3ext_keyUsage" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -251,6 +252,22 @@
                     "title": "The boolean indicating wether the certificate can be used as a CA or not"
                 }
             }
+        },
+        "x509v3ext_keyUsage": {
+            "type": "object",
+            "title": "Extended Property: Key Usage",
+            "description": "Specifies the allowed uses of the public key in the certificate",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_keyUsage$"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "List of possible key ussages",
+                    "examples": ["Digital signature, Key encipherment"]
+                }
+            } 
         }
     }
 }
