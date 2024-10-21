@@ -39,7 +39,8 @@
                                     { "$ref": "#/definitions/state" },
                                     { "$ref": "#/definitions/x509v3ext_basicConstraints_CA" },
                                     { "$ref": "#/definitions/x509v3ext_keyUsage" },
-                                    { "$ref": "#/definitions/x509v3ext_extendedKeyUsage" }
+                                    { "$ref": "#/definitions/x509v3ext_extendedKeyUsage" },
+                                    { "$ref": "#/definitions/x509v3ext_subjectAlternativeName" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -283,6 +284,22 @@
                     "type": "string",
                     "title": "List of possible extended key ussages",
                     "examples": ["TLS web server authentication"]
+                }
+            } 
+        },
+        "x509v3ext_subjectAlternativeName": {
+            "type": "object",
+            "title": "Extended Property: Subject Alternative Name",
+            "description": "Allows inclusion of additional names to identify the entity associated with the certificate",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_subjectAlternativeName$"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "List of possible names to identify the entity associated with the certificate",
+                    "examples": ["DNS:test.participate.preprod.fdefi.co.uk"]
                 }
             } 
         }

@@ -47,6 +47,10 @@
                 {
                     "name": "x509v3ext_extendedKeyUsage",
                     "value": "TLS Web Server Authentication"
+                },
+                {
+                    "name": "x509v3ext_subjectAlternativeName",
+                    "value": "DNS:test.participate.preprod.fdefi.co.uk"
                 }
             ]
         },
