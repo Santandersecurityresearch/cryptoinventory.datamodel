@@ -34,7 +34,10 @@
                             "type": "array",
                             "minItems": 1,
                             "items": {
-                                "$ref": "#/definitions/certificateOwnProperties"
+                                "oneOf": [
+                                    { "$ref": "#/definitions/serialNumber40" },
+                                    { "$ref": "#/definitions/state" }
+                                ]
                             },
                             "required": ["serialNumber"]
                         }
@@ -96,15 +99,6 @@
             },
             "required": ["purpose"]
         },
-        "certificateOwnProperties": {
-            "type": "object",
-            "items": {
-                "oneOf": [
-                    { "$ref": "#/definitions/serialNumber40" },
-                    { "$ref": "#/definitions/state" }
-                ]
-            }
-        },
         "certificateManagementProperties": {
             "type": "object",
             "oneOf": [
@@ -164,9 +158,18 @@
             "required": ["type", "properties"]
         },
         "serialNumber40": {
-            "type": "string",
+            "type": "object",
             "title": "A 40 bytes serial number in groups of two bytes separated by colons",
-            "pattern": "^([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2}$"
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "pattern": "^serialNumber$"
+                },
+                "value": {
+                    "type": "string",
+                    "pattern": "^([0-9a-fA-F]{2}:){19}[0-9a-fA-F]{2}$"
+                }
+            }
         },
         "state": {
             "type": "object",
