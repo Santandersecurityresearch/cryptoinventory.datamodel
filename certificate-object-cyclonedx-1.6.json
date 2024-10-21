@@ -43,6 +43,10 @@
                 {
                     "name": "x509v3ext_keyUsage",
                     "value": "Digital signature, Key encipherment"
+                },
+                {
+                    "name": "x509v3ext_extendedKeyUsage",
+                    "value": "TLS Web Server Authentication"
                 }
             ]
         },

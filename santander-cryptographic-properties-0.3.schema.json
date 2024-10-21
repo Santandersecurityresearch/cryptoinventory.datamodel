@@ -38,7 +38,8 @@
                                     { "$ref": "#/definitions/serialNumber40" },
                                     { "$ref": "#/definitions/state" },
                                     { "$ref": "#/definitions/x509v3ext_basicConstraints_CA" },
-                                    { "$ref": "#/definitions/x509v3ext_keyUsage" }
+                                    { "$ref": "#/definitions/x509v3ext_keyUsage" },
+                                    { "$ref": "#/definitions/x509v3ext_extendedKeyUsage" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -266,6 +267,22 @@
                     "type": "string",
                     "title": "List of possible key ussages",
                     "examples": ["Digital signature, Key encipherment"]
+                }
+            } 
+        },
+        "x509v3ext_extendedKeyUsage": {
+            "type": "object",
+            "title": "Extended Property: Extended key Usage",
+            "description": "Specifies the additional purposes for which the public key can be used",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_extendedKeyUsage$"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "List of possible extended key ussages",
+                    "examples": ["TLS web server authentication"]
                 }
             } 
         }
