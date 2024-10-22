@@ -41,7 +41,8 @@
                                     { "$ref": "#/definitions/x509v3ext_keyUsage" },
                                     { "$ref": "#/definitions/x509v3ext_extendedKeyUsage" },
                                     { "$ref": "#/definitions/x509v3ext_subjectAlternativeName" },
-                                    { "$ref": "#/definitions/x509v3ext_authorityKeyIdentifier" }
+                                    { "$ref": "#/definitions/x509v3ext_authorityKeyIdentifier" },
+                                    { "$ref": "#/definitions/x509v3ext_subjectKeyIdentifier" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -313,12 +314,26 @@
         },
         "x509v3ext_authorityKeyIdentifier": {
             "type": "object",
-            "title": "Extended Property: Authority Key Identix509v3ext_authorityKeyIdentifierfier",
+            "title": "Extended Property: Authority Key Identifier",
             "description": "Identifies the public key of the CA that issued the certificate",
             "properties":{
                 "name": {
                     "type": "string",
                     "pattern": "^x509v3ext_authorityKeyIdentifier$"
+                },
+                "value": {
+                    "$ref":"#/definitions/40BytesHex"
+                }
+            } 
+        },
+        "x509v3ext_subjectKeyIdentifier": {
+            "type": "object",
+            "title": "Extended Property: Subject key Identifier",
+            "description": "Identifies the public key associated with the entity the certificate was issued to",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_subjectKeyIdentifier$"
                 },
                 "value": {
                     "$ref":"#/definitions/40BytesHex"

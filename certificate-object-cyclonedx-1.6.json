@@ -55,6 +55,10 @@
                 {
                     "name": "x509v3ext_authorityKeyIdentifier",
                     "value": "40a01388a4f0258fddec313ef987a62d49ceb45c"
+                },
+                {
+                    "name": "x509v3ext_subjectKeyIdentifier",
+                    "value": "40a01388a4f0258fddec313ef987a62d49ceb45d"
                 }
             ]
         },
