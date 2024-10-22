@@ -63,6 +63,10 @@
                 {
                     "name": "x509v3ext_authorityInformationAccess",
                     "value": "CA Issuers - URI:http://crl.non-prod-pki.fdefi.co.uk/tlsR1/cert.cer"
+                },
+                {
+                    "name": "x509v3ext_certificatePolicies",
+                    "value": "CPS: http://crlCA.gsnetclout.com/pki/InternalCPS.txt"
                 }
             ]
         },

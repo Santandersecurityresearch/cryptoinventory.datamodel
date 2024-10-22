@@ -43,7 +43,8 @@
                                     { "$ref": "#/definitions/x509v3ext_subjectAlternativeName" },
                                     { "$ref": "#/definitions/x509v3ext_authorityKeyIdentifier" },
                                     { "$ref": "#/definitions/x509v3ext_subjectKeyIdentifier" },
-                                    { "$ref": "#/definitions/x509v3ext_authorityInformationAccess" }
+                                    { "$ref": "#/definitions/x509v3ext_authorityInformationAccess" },
+                                    { "$ref": "#/definitions/x509v3ext_certificatePolicies" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -353,6 +354,21 @@
                 "value": {
                     "type": "string",
                     "example": "CA Issuers - URI:http://crl.non-prod-pki.fdefi.co.uk/tlsR1/cert.cer"
+                }
+            } 
+        },
+        "x509v3ext_certificatePolicies": {
+            "type": "object",
+            "title": "Extended Property: Certificate Policies",
+            "description": "Defines the policies under which the certificate was issued and can be used",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_certificatePolicies$"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "CPS: http://crlCA.gsnetclout.com/pki/InternalCPS.txt"
                 }
             } 
         }
