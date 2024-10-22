@@ -44,7 +44,8 @@
                                     { "$ref": "#/definitions/x509v3ext_authorityKeyIdentifier" },
                                     { "$ref": "#/definitions/x509v3ext_subjectKeyIdentifier" },
                                     { "$ref": "#/definitions/x509v3ext_authorityInformationAccess" },
-                                    { "$ref": "#/definitions/x509v3ext_certificatePolicies" }
+                                    { "$ref": "#/definitions/x509v3ext_certificatePolicies" },
+                                    { "$ref": "#/definitions/x509v3ext_crlDistributionPoints" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -370,7 +371,22 @@
                     "type": "string",
                     "example": "CPS: http://crlCA.gsnetclout.com/pki/InternalCPS.txt"
                 }
-            } 
+            }
+        },
+        "x509v3ext_crlDistributionPoints": {
+            "type": "object",
+            "title": "Extended Property: CRL Distribution Points",
+            "description": "Contains one or more URLs where a Certificate Revocation List (CRL) can be obtained",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_crlDistributionPoints$"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "URI:http://crlCA.cloud.corp/pki/Santander%20CA%20Root(2).crt, URI:http://crlCA.gsnetcloud.com/pki/Santander%20CA%20Root(2).crt"
+                }
+            }
         }
     }
 }

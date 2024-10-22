@@ -67,6 +67,10 @@
                 {
                     "name": "x509v3ext_certificatePolicies",
                     "value": "CPS: http://crlCA.gsnetclout.com/pki/InternalCPS.txt"
+                },
+                {
+                    "name": "x509v3ext_crlDistributionPoints",
+                    "value": "URI:http://crlCA.cloud.corp/pki/Santander%20CA%20Root(2).crt, URI:http://crlCA.gsnetcloud.com/pki/Santander%20CA%20Root(2).crt"
                 }
             ]
         },
