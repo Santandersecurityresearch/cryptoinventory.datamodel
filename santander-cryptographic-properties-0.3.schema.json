@@ -30,6 +30,28 @@
                         "minItems": 1
                     },
                     "properties": {
+                        "cryptoProperties": {
+                            "properties": {
+                                "certificateProperties": {
+                                    "properties":  {
+                                        "certificateFormat": {
+                                            "type": "string",
+                                            "enum": [
+                                                "X.509",
+                                                "X.509v2",
+                                                "X.509v3",
+                                                "PEM",
+                                                "DER",
+                                                "CVC",
+                                                "CSR",
+                                                "PFX/PKCS12",
+                                                "P7B"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
                         "properties": {
                             "type": "array",
                             "minItems": 1,
