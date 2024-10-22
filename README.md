@@ -17,13 +17,13 @@ npm install ajv-cli
 
 ```
 # validate certificate-object against CBOM 
-./validate.sh CBOM certificate-object-4.json
+./validate.sh CBOM certificate-object-cyclonedx-1.6.json
  
 # validate certificate-object against SANTANDER BOM 
-./validate.sh SBOM certificate-object-4.json
+./validate.sh SBOM certificate-object-cyclonedx-1.6.json
  
 # validate certificate-object against BOTH 
-./validate.sh ALL certificate-object-4.json
+./validate.sh ALL certificate-object-cyclonedx-1.6.json
 ```
 
 We have created the santander-cryptographic-properties schema to do the extra validations for our own data model.
@@ -42,6 +42,7 @@ We have created the santander-cryptographic-properties schema to do the extra va
 * We have defined the **fingerprint** information using the hash object defined by CBOM, but that object does not have the possibility of adding a name or a label to it, so you don't know that information corresponds to the fingerprint at all.
 * We have defined several **administrative dates** as external properties that we agree they should be kept out of the standard, because there's no standard spec or recommendation to map those fields, but we still need them.
 * We have defined a **revocation reason** in the external properties with 2 possible values: "keyCompromise" and "administrativeReason". We think this property should be included in CBOM standard definition.
+* We have defined almost all the **x509v3 extended properties** as non required extended properties.
 
 ## Requests for IBM / CycloneDX
 
