@@ -35,6 +35,42 @@
                 {
                     "name": "state",
                     "value": "operational"
+                },
+                {
+                    "name": "x509v3ext_basicConstraints_CA",
+                    "value": false
+                },
+                {
+                    "name": "x509v3ext_keyUsage",
+                    "value": "Digital signature, Key encipherment"
+                },
+                {
+                    "name": "x509v3ext_extendedKeyUsage",
+                    "value": "TLS Web Server Authentication"
+                },
+                {
+                    "name": "x509v3ext_subjectAlternativeName",
+                    "value": "DNS:test.participate.preprod.fdefi.co.uk"
+                },
+                {
+                    "name": "x509v3ext_authorityKeyIdentifier",
+                    "value": "40a01388a4f0258fddec313ef987a62d49ceb45c"
+                },
+                {
+                    "name": "x509v3ext_subjectKeyIdentifier",
+                    "value": "40a01388a4f0258fddec313ef987a62d49ceb45d"
+                },
+                {
+                    "name": "x509v3ext_authorityInformationAccess",
+                    "value": "CA Issuers - URI:http://crl.non-prod-pki.fdefi.co.uk/tlsR1/cert.cer"
+                },
+                {
+                    "name": "x509v3ext_certificatePolicies",
+                    "value": "CPS: http://crlCA.gsnetclout.com/pki/InternalCPS.txt"
+                },
+                {
+                    "name": "x509v3ext_crlDistributionPoints",
+                    "value": "URI:http://crlCA.cloud.corp/pki/Santander%20CA%20Root(2).crt, URI:http://crlCA.gsnetcloud.com/pki/Santander%20CA%20Root(2).crt"
                 }
             ]
         },
