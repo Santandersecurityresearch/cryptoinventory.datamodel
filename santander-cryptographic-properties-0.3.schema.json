@@ -42,7 +42,8 @@
                                     { "$ref": "#/definitions/x509v3ext_extendedKeyUsage" },
                                     { "$ref": "#/definitions/x509v3ext_subjectAlternativeName" },
                                     { "$ref": "#/definitions/x509v3ext_authorityKeyIdentifier" },
-                                    { "$ref": "#/definitions/x509v3ext_subjectKeyIdentifier" }
+                                    { "$ref": "#/definitions/x509v3ext_subjectKeyIdentifier" },
+                                    { "$ref": "#/definitions/x509v3ext_authorityInformationAccess" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -337,6 +338,21 @@
                 },
                 "value": {
                     "$ref":"#/definitions/40BytesHex"
+                }
+            } 
+        },
+        "x509v3ext_authorityInformationAccess": {
+            "type": "object",
+            "title": "Extended Property: Authority Information Access (AIA)",
+            "description": "Contains CA issuers and OCSP information",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^x509v3ext_authorityInformationAccess$"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "CA Issuers - URI:http://crl.non-prod-pki.fdefi.co.uk/tlsR1/cert.cer"
                 }
             } 
         }

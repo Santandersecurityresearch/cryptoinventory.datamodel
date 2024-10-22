@@ -59,6 +59,10 @@
                 {
                     "name": "x509v3ext_subjectKeyIdentifier",
                     "value": "40a01388a4f0258fddec313ef987a62d49ceb45d"
+                },
+                {
+                    "name": "x509v3ext_authorityInformationAccess",
+                    "value": "CA Issuers - URI:http://crl.non-prod-pki.fdefi.co.uk/tlsR1/cert.cer"
                 }
             ]
         },
