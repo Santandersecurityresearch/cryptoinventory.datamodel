@@ -63,7 +63,8 @@
                                     { "$ref": "#/definitions/x509v3ext_authorityInformationAccess" },
                                     { "$ref": "#/definitions/x509v3ext_certificatePolicies" },
                                     { "$ref": "#/definitions/x509v3ext_crlDistributionPoints" },
-                                    { "$ref": "#/definitions/signatureAlgorithms" }
+                                    { "$ref": "#/definitions/signatureAlgorithms" },
+                                    { "$ref": "#/definitions/certificateEncoding" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -418,6 +419,26 @@
                 "value": {
                     "type": "string",
                     "example": "ecdsa-with-SHA256, sha256WithRSAEncryption"
+                }
+            }
+        },
+        "certificateEncoding": {
+            "type": "object",
+            "title": "Certificate Encoding",
+            "description": "Encoding used to deliver the certificate",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^certificateEncoding$"
+                },
+                "value": {
+                    "type": "string",
+                    "enum": [
+                        "PEM",
+                        "PKCS#7/P7B",
+                        "DER",
+                        "PKCS#12/PFX"
+                    ]
                 }
             }
         }

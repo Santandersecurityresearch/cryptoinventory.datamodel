@@ -74,6 +74,10 @@
                 {
                     "name": "signatureAlgorithms",
                     "value": "ecdsa-with-SHA256, sha256WithRSAEncryption"
+                },
+                {
+                    "name": "certificateEncoding",
+                    "value": "PEM"
                 }
             ]
         },
