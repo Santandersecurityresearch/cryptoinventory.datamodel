@@ -37,15 +37,10 @@
                                         "certificateFormat": {
                                             "type": "string",
                                             "enum": [
-                                                "X.509",
-                                                "X.509v2",
                                                 "X.509v3",
-                                                "PEM",
-                                                "DER",
-                                                "CVC",
-                                                "CSR",
-                                                "PFX/PKCS12",
-                                                "P7B"
+                                                "X.509v2",
+                                                "X.509",
+                                                "CVC"
                                             ]
                                         }
                                     }
