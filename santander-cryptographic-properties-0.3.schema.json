@@ -139,7 +139,7 @@
             "type": "object",
             "oneOf": [
                 { "$ref": "#/definitions/managementDate" },
-                { "$ref": "#/definitions/revocationReason" }
+                { "$ref": "#/definitions/retirementReason" }
             ],
             "additionalItems": false
         },
@@ -218,12 +218,12 @@
                 "value": {
                     "type": "string",
                     "title": "The state of the certificate",
+                    "description": "Possible states for a certificate: the revocation is managed as a retirement and it is distinguished by its retirementReason.",
                     "enum": [
                         "pre-operational",
                         "operational",
                         "retired",
                         "suspended",
-                        "revoked",
                         "destroyed"
                     ]
                 }
@@ -252,21 +252,22 @@
                 }
             }
         },
-        "revocationReason":{
+        "retirementReason":{
             "type": "object",
             "title": "The reason for which the certificate was revoked",
             "properties": {
                 "name": {
                     "type": "string",
                     "title": "The name of the reason",
-                    "pattern": "^revocationReason$"
+                    "pattern": "^retirementReason$"
                 },
                 "value": {
                     "type": "string",
                     "title": "The reason for which the certificate was revoked",
                     "enum": [
-                        "keyCompromise",
-                        "administrativeReason"
+                        "expired",
+                        "revokedKeyCompromise",
+                        "revokedAdministrativeReason"
                     ]
                 }
             }

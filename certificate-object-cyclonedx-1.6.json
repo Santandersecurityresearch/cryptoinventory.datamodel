@@ -103,12 +103,8 @@
                 "value": "2024-08-15T08:58:36.039Z"
             },
             {
-                "name": "revocationReason",
-                "value": "keyCompromise"
-            },
-            {
-                "name": "revocationDate",
-                "value": "2024-08-15T08:58:36.039Z"
+                "name": "retirementReason",
+                "value": "revokedKeyCompromise"
             }
         ]
     },
