@@ -17,7 +17,6 @@
                     "issuerName": "C=ES, O=Santander Spain Test, OU=SAN PKI, CN=SAN Issuing TEST CA",
                     "notValidBefore": "Oct 27 12:26:13 2023 GMT",
                     "notValidAfter": "Apr 27 00:26:43 2024 GMT",
-                    "signatureAlgorithmRef": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287",
                     "certificateFormat": "X.509"
                 }
             },
@@ -71,6 +70,10 @@
                 {
                     "name": "x509v3ext_crlDistributionPoints",
                     "value": "URI:http://crlCA.cloud.corp/pki/Santander%20CA%20Root(2).crt, URI:http://crlCA.gsnetcloud.com/pki/Santander%20CA%20Root(2).crt"
+                },
+                {
+                    "name": "signatureAlgorithms",
+                    "value": "ecdsa-with-SHA256, sha256WithRSAEncryption"
                 }
             ]
         },
