@@ -17,7 +17,6 @@
                     "issuerName": "C=ES, O=Santander Spain Test, OU=SAN PKI, CN=SAN Issuing TEST CA",
                     "notValidBefore": "Oct 27 12:26:13 2023 GMT",
                     "notValidAfter": "Apr 27 00:26:43 2024 GMT",
-                    "signatureAlgorithmRef": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287",
                     "certificateFormat": "X.509"
                 }
             },
@@ -38,7 +37,7 @@
                 },
                 {
                     "name": "x509v3ext_basicConstraints_CA",
-                    "value": false
+                    "value": "false"
                 },
                 {
                     "name": "x509v3ext_keyUsage",
@@ -71,6 +70,18 @@
                 {
                     "name": "x509v3ext_crlDistributionPoints",
                     "value": "URI:http://crlCA.cloud.corp/pki/Santander%20CA%20Root(2).crt, URI:http://crlCA.gsnetcloud.com/pki/Santander%20CA%20Root(2).crt"
+                },
+                {
+                    "name": "signatureAlgorithms",
+                    "value": "ecdsa-with-SHA256, sha256WithRSAEncryption"
+                },
+                {
+                    "name": "certificateEncoding",
+                    "value": "PEM"
+                },
+                {
+                    "name": "keys",
+                    "value": "4096 - RSA, SLH-DSA-SHA2-128s - SLH-DSA"
                 }
             ]
         },
@@ -96,12 +107,8 @@
                 "value": "2024-08-15T08:58:36.039Z"
             },
             {
-                "name": "revocationReason",
-                "value": "keyCompromise"
-            },
-            {
-                "name": "revocationDate",
-                "value": "2024-08-15T08:58:36.039Z"
+                "name": "retirementReason",
+                "value": "revokedKeyCompromise"
             }
         ]
     },
@@ -110,41 +117,6 @@
             "type": "application",
             "name": "Fnality",
             "bom-ref": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287"
-        },
-        {
-            "type": "cryptographic-asset",
-            "name": "Private Key 1",
-            "bom-ref": "urn:uuid:07b6f01b-cb33-9445-29b7-c02916891287",
-            "cryptoProperties": {
-                "assetType":"related-crypto-material",
-                "relatedCryptoMaterialProperties": {
-                    "type": "private-key",
-                    "size": 2048
-                }
-            },
-            "properties": [
-                { 
-                    "name": "algorithm",
-                    "value": "RSA" 
-                }
-            ]
-        },
-        {
-            "type": "cryptographic-asset",
-            "name": "Private Key 2",
-            "cryptoProperties": {
-                "assetType":"related-crypto-material",
-                "relatedCryptoMaterialProperties": {
-                    "type": "private-key",
-                    "size": 2048
-                }
-            },
-            "properties": [
-                { 
-                    "name": "algorithm",
-                    "value": "ML-DSA" 
-                }
-            ]
         }
     ]
 }

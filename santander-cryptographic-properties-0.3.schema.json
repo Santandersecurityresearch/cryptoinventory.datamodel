@@ -37,15 +37,10 @@
                                         "certificateFormat": {
                                             "type": "string",
                                             "enum": [
-                                                "X.509",
-                                                "X.509v2",
                                                 "X.509v3",
-                                                "PEM",
-                                                "DER",
-                                                "CVC",
-                                                "CSR",
-                                                "PFX/PKCS12",
-                                                "P7B"
+                                                "X.509v2",
+                                                "X.509",
+                                                "CVC"
                                             ]
                                         }
                                     }
@@ -67,7 +62,10 @@
                                     { "$ref": "#/definitions/x509v3ext_subjectKeyIdentifier" },
                                     { "$ref": "#/definitions/x509v3ext_authorityInformationAccess" },
                                     { "$ref": "#/definitions/x509v3ext_certificatePolicies" },
-                                    { "$ref": "#/definitions/x509v3ext_crlDistributionPoints" }
+                                    { "$ref": "#/definitions/x509v3ext_crlDistributionPoints" },
+                                    { "$ref": "#/definitions/signatureAlgorithms" },
+                                    { "$ref": "#/definitions/certificateEncoding" },
+                                    { "$ref": "#/definitions/tacticalKeys" }
                                 ]
                             },
                             "required": ["serialNumber"]
@@ -142,7 +140,7 @@
             "type": "object",
             "oneOf": [
                 { "$ref": "#/definitions/managementDate" },
-                { "$ref": "#/definitions/revocationReason" }
+                { "$ref": "#/definitions/retirementReason" }
             ],
             "additionalItems": false
         },
@@ -221,12 +219,12 @@
                 "value": {
                     "type": "string",
                     "title": "The state of the certificate",
+                    "description": "Possible states for a certificate: the revocation is managed as a retirement and it is distinguished by its retirementReason.",
                     "enum": [
                         "pre-operational",
                         "operational",
                         "retired",
                         "suspended",
-                        "revoked",
                         "destroyed"
                     ]
                 }
@@ -255,21 +253,22 @@
                 }
             }
         },
-        "revocationReason":{
+        "retirementReason":{
             "type": "object",
             "title": "The reason for which the certificate was revoked",
             "properties": {
                 "name": {
                     "type": "string",
                     "title": "The name of the reason",
-                    "pattern": "^revocationReason$"
+                    "pattern": "^retirementReason$"
                 },
                 "value": {
                     "type": "string",
                     "title": "The reason for which the certificate was revoked",
                     "enum": [
-                        "keyCompromise",
-                        "administrativeReason"
+                        "expired",
+                        "revokedKeyCompromise",
+                        "revokedAdministrativeReason"
                     ]
                 }
             }
@@ -284,8 +283,13 @@
                     "pattern": "^x509v3ext_basicConstraints_CA$"
                 },
                 "value": {
-                    "type": "boolean",
-                    "title": "The boolean indicating wether the certificate can be used as a CA or not"
+                    "type": "string",
+                    "title": "The boolean indicating wether the certificate can be used as a CA or not",
+                    "definition": "Created as a string due to CBOM restrictions for the extende properties",
+                    "enum": [
+                        "true",
+                        "false"
+                    ]
                 }
             }
         },
@@ -407,6 +411,56 @@
                 "value": {
                     "type": "string",
                     "example": "URI:http://crlCA.cloud.corp/pki/Santander%20CA%20Root(2).crt, URI:http://crlCA.gsnetcloud.com/pki/Santander%20CA%20Root(2).crt"
+                }
+            }
+        },
+        "signatureAlgorithms": {
+            "type": "object",
+            "title": "List of signature algorithms, split by commas",
+            "description": "Contains one or more (for hybrid certs) signature algorithms",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^signatureAlgorithms$"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "ecdsa-with-SHA256, sha256WithRSAEncryption"
+                }
+            }
+        },
+        "certificateEncoding": {
+            "type": "object",
+            "title": "Certificate Encoding",
+            "description": "Encoding used to deliver the certificate",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^certificateEncoding$"
+                },
+                "value": {
+                    "type": "string",
+                    "enum": [
+                        "PEM",
+                        "PKCS#7/P7B",
+                        "DER",
+                        "PKCS#12/PFX"
+                    ]
+                }
+            }
+        },
+        "tacticalKeys": {
+            "type": "object",
+            "title": "Tactical Keys definition",
+            "description": "List of possible keys, split by commas. Tactical solution until we get keys inventoried. Values are not validated at this level because it is a temporary solution. The goal is to use the components array to link to all the necessary keys there",
+            "properties":{
+                "name": {
+                    "type": "string",
+                    "pattern": "^keys$"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "224-255 bits - EdDSA, 4096 - DSA"
                 }
             }
         }
