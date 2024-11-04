@@ -283,8 +283,13 @@
                     "pattern": "^x509v3ext_basicConstraints_CA$"
                 },
                 "value": {
-                    "type": "boolean",
-                    "title": "The boolean indicating wether the certificate can be used as a CA or not"
+                    "type": "string",
+                    "title": "The boolean indicating wether the certificate can be used as a CA or not",
+                    "definition": "Created as a string due to CBOM restrictions for the extende properties",
+                    "enum": [
+                        "true",
+                        "false"
+                    ]
                 }
             }
         },

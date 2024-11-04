@@ -37,7 +37,7 @@
                 },
                 {
                     "name": "x509v3ext_basicConstraints_CA",
-                    "value": false
+                    "value": "false"
                 },
                 {
                     "name": "x509v3ext_keyUsage",
