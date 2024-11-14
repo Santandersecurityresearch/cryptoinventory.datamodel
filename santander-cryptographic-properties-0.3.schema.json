@@ -96,8 +96,9 @@
         }
     },
     "definitions": {
-        "40BytesHex":{
+        "20BytesHex":{
             "type": "string",
+            "definition": "A 20 bytes number, represented as an hexadecimal string, with or without bytes separators (:)",
             "examples": [
                 "18:C9:09:8E:06:01:9C:25:AF:B5:A3:DB:C0:C9:91:C8:F5:62:1C:C1",
                 "18C9098E06019C25AFB5A3DBC0C991C8F5621CC1"
@@ -196,14 +197,15 @@
         },
         "serialNumber40": {
             "type": "object",
-            "title": "A 40 bytes serial number in groups of two bytes separated by colons",
+            "title": "The serial number of the certificate",
+            "definition": "A 40 character hexadecimal string. May be in groups of bytes separated by colons, or not",
             "properties": {
                 "name": {
                     "type": "string",
                     "pattern": "^serialNumber$"
                 },
                 "value": {
-                    "$ref":"#/definitions/40BytesHex"
+                    "$ref":"#/definitions/20BytesHex"
                 }
             }
         },
@@ -351,7 +353,7 @@
                     "pattern": "^x509v3ext_authorityKeyIdentifier$"
                 },
                 "value": {
-                    "$ref":"#/definitions/40BytesHex"
+                    "$ref":"#/definitions/20BytesHex"
                 }
             } 
         },
@@ -365,7 +367,7 @@
                     "pattern": "^x509v3ext_subjectKeyIdentifier$"
                 },
                 "value": {
-                    "$ref":"#/definitions/40BytesHex"
+                    "$ref":"#/definitions/20BytesHex"
                 }
             } 
         },
