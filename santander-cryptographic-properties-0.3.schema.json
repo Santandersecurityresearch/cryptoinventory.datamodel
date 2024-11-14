@@ -141,7 +141,7 @@
             "type": "object",
             "oneOf": [
                 { "$ref": "#/definitions/managementDate" },
-                { "$ref": "#/definitions/retirementReason" }
+                { "$ref": "#/definitions/revocationReason" }
             ],
             "additionalItems": false
         },
@@ -221,12 +221,13 @@
                 "value": {
                     "type": "string",
                     "title": "The state of the certificate",
-                    "description": "Possible states for a certificate: the revocation is managed as a retirement and it is distinguished by its retirementReason.",
+                    "description": "Possible states for a certificate. Differs from NIST's key states because of the revoked state. A revocation may be or not because of being compromised (there can also be administrative reasons)",
                     "enum": [
                         "pre-operational",
                         "operational",
                         "retired",
                         "suspended",
+                        "revoked",
                         "destroyed"
                     ]
                 }
@@ -255,22 +256,21 @@
                 }
             }
         },
-        "retirementReason":{
+        "revocationReason":{
             "type": "object",
             "title": "The reason for which the certificate was revoked",
             "properties": {
                 "name": {
                     "type": "string",
                     "title": "The name of the reason",
-                    "pattern": "^retirementReason$"
+                    "pattern": "^revocationReason$"
                 },
                 "value": {
                     "type": "string",
                     "title": "The reason for which the certificate was revoked",
                     "enum": [
-                        "expired",
-                        "revokedKeyCompromise",
-                        "revokedAdministrativeReason"
+                        "keyCompromise",
+                        "administrativeReason"
                     ]
                 }
             }

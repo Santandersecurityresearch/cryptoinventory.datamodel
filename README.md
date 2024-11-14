@@ -47,14 +47,13 @@ You can check the agreed final model [here](data-model-for-certificates-v.1.0.0.
 * We have defined the **keys** in the components array instead of using CBOM fields in order to be able to define several keys so we can track hybrid certificates in the future. This is not incompatible with current standard (non-hybrid) certificates, because the array has a minimum of one value, with no maximum. The keys objects are kept with a minimum set of properties at the moment (keyIdentifier, keySize, and algorithm properties), because we are focusing on tracking certs for now. - **Note:** This is the ideal, target, scenario. For now our definition has changed to a single list of keys+sizes with multiple options due to CMDB limitations.
 * We have defined the **fingerprint** information using the hash object defined by CBOM, but that object does not have the possibility of adding a name or a label to it, so you don't know that information corresponds to the fingerprint at all.
 * We have defined several **administrative dates** as external properties that we agree they should be kept out of the standard, because there's no standard spec or recommendation to map those fields, but we still need them.
-* We have defined a **retirement reason** in the external properties with 3 possible values: "expired", "revokedKeyCompromise" and "revokedAdministrativeReason". We think this property should be included in CBOM standard definition (maybe splitting the `revoked` from the `retired` stated, as we initially proposed).
 * We have defined almost all the **x509v3 extended properties** as non required extended properties.
 
 ## Requests for IBM / CycloneDX
 
 * Include certificate **state** in CBOM definition for certificates.
 * Include **serialNumber** in CBOM deinition for certificates.
-* Include **retirementReason** in CBOM definition for certificates.
+* Include **revocationReason** in CBOM definition for certificates.
 * Add the possibility of a new property **name/label for hashes** to define what the hash is representing.
 * Add the possibility of defining the **extended properties value as an object** in CBOM definition.
 
