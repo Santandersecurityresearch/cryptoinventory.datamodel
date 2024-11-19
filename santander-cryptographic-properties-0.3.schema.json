@@ -96,8 +96,9 @@
         }
     },
     "definitions": {
-        "40BytesHex":{
+        "20BytesHex":{
             "type": "string",
+            "definition": "A 20 bytes number, represented as an hexadecimal string, with or without bytes separators (:)",
             "examples": [
                 "18:C9:09:8E:06:01:9C:25:AF:B5:A3:DB:C0:C9:91:C8:F5:62:1C:C1",
                 "18C9098E06019C25AFB5A3DBC0C991C8F5621CC1"
@@ -140,7 +141,7 @@
             "type": "object",
             "oneOf": [
                 { "$ref": "#/definitions/managementDate" },
-                { "$ref": "#/definitions/retirementReason" }
+                { "$ref": "#/definitions/revocationReason" }
             ],
             "additionalItems": false
         },
@@ -196,14 +197,15 @@
         },
         "serialNumber40": {
             "type": "object",
-            "title": "A 40 bytes serial number in groups of two bytes separated by colons",
+            "title": "The serial number of the certificate",
+            "definition": "A 40 character hexadecimal string. May be in groups of bytes separated by colons, or not",
             "properties": {
                 "name": {
                     "type": "string",
                     "pattern": "^serialNumber$"
                 },
                 "value": {
-                    "$ref":"#/definitions/40BytesHex"
+                    "$ref":"#/definitions/20BytesHex"
                 }
             }
         },
@@ -219,12 +221,13 @@
                 "value": {
                     "type": "string",
                     "title": "The state of the certificate",
-                    "description": "Possible states for a certificate: the revocation is managed as a retirement and it is distinguished by its retirementReason.",
+                    "description": "Possible states for a certificate. Differs from NIST's key states because of the revoked state. A revocation may be or not because of being compromised (there can also be administrative reasons)",
                     "enum": [
                         "pre-operational",
                         "operational",
                         "retired",
                         "suspended",
+                        "revoked",
                         "destroyed"
                     ]
                 }
@@ -253,22 +256,21 @@
                 }
             }
         },
-        "retirementReason":{
+        "revocationReason":{
             "type": "object",
             "title": "The reason for which the certificate was revoked",
             "properties": {
                 "name": {
                     "type": "string",
                     "title": "The name of the reason",
-                    "pattern": "^retirementReason$"
+                    "pattern": "^revocationReason$"
                 },
                 "value": {
                     "type": "string",
                     "title": "The reason for which the certificate was revoked",
                     "enum": [
-                        "expired",
-                        "revokedKeyCompromise",
-                        "revokedAdministrativeReason"
+                        "keyCompromise",
+                        "administrativeReason"
                     ]
                 }
             }
@@ -351,7 +353,7 @@
                     "pattern": "^x509v3ext_authorityKeyIdentifier$"
                 },
                 "value": {
-                    "$ref":"#/definitions/40BytesHex"
+                    "$ref":"#/definitions/20BytesHex"
                 }
             } 
         },
@@ -365,7 +367,7 @@
                     "pattern": "^x509v3ext_subjectKeyIdentifier$"
                 },
                 "value": {
-                    "$ref":"#/definitions/40BytesHex"
+                    "$ref":"#/definitions/20BytesHex"
                 }
             } 
         },

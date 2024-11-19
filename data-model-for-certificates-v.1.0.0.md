@@ -18,9 +18,8 @@
 * certificateEncoding - Options: `[PEM, PKCS#7/P7B, DER, PKCS#12/PFX]`
 * **fingerprintAlgorithm** - Free text, string(50).
 * **fingerPrint** - Certificate's fingerprint - string with variable length, depending on the algorithm used.
-* ~~**state** - Certificate's state. Options: `[pre-operational, operational, retired, suspended, revoked, destroyed]`~~
-* **state** - Certificate's state. Options: `[pre-operational, operational, retired, suspended, destroyed]`
-* ~~revocationReason - Options: `[keyCompromise, administrativeReason]`. Should be mandatory en the case that the state is revoked.~~
+* **state** - Certificate's state. Options: `[pre-operational, operational, retired, suspended, revoked, destroyed]`
+* revocationReason - Options: `[keyCompromise, administrativeReason]`. Should be mandatory en the case that the state is revoked.
 * retirementReason - Options: `[expired, revokedKeyCompromise, revokedAdministrativeReason]`. Mandatory en the case that the state is `retired`.
 * ~~**keys** - Certificate's private keys array. It can be more than one to have into account the possibility of Mixed Certificates. Ideally:  `[ {size1, algo1}, {size2, algo2}, …, {sizeN, algoN} ]`. In the future it will be an array of CMDB references.~~
 * **keys** - Certificate's key algorithms and parameters. Tactical approach until we have an inventory of keys. List of possible values in the keys-list document.
@@ -50,7 +49,7 @@
 ## Notes:
 
 * Properties in bold mean they are mandatory.
-* We have kept the original proposal for `states` and `keys`, crossed out, because the current definition is a compromise for CMDB current capacities. In the future we may evolve to the ideal proposal.
+* We have kept the original proposal for `keys` (crossed out) because the current definition is a compromise for CMDB current capacities. In the future we may evolve to the ideal proposal.
 * The model should be able to continue evolving. For example the "keys" information will be changed for CMDB references when we have a keys inventory.
 
 ## References:
