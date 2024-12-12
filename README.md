@@ -51,11 +51,16 @@ You can check the agreed final model [here](data-model-for-certificates-v.1.0.0.
 
 ## Requests for IBM / CycloneDX
 
-* Include certificate **state** in CBOM definition for certificates.
-* Include **serialNumber** in CBOM deinition for certificates.
-* Include **revocationReason** in CBOM definition for certificates.
-* Add the possibility of a new property **name/label for hashes** to define what the hash is representing.
-* Add the possibility of defining the **extended properties value as an object** in CBOM definition.
+Request | Status
+--- | ---
+Include certificate **state** in CBOM definition for certificates. | Under Analysis
+Include **revocationReason** in CBOM definition for certificates. | Under analysis. Depends on `state` inclussion
+Include **serialNumber** in CBOM deinition for certificates. | Included in v.1.7
+Add the possibility of a new property **name/label for hashes** to define what the hash is representing. | Included in v.1.7
+Add the possibility of defining the **extended properties value as an object** in CBOM definition. | Rejected
+Array to manage a list of keys | TBR
+Array to manage a list of signatures | TBR
+Add an object inside certProperties to define **x509v3 extended properties** | TBR
 
 **Note: If many fields are being added to the extended properties block, it may indicate that the model is missing some important information.**
 
