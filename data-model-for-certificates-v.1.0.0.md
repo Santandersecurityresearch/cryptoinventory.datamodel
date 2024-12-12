@@ -19,8 +19,7 @@
 * **fingerprintAlgorithm** - Free text, string(50).
 * **fingerPrint** - Certificate's fingerprint - string with variable length, depending on the algorithm used.
 * **state** - Certificate's state. Options: `[pre-operational, operational, retired, suspended, revoked, destroyed]`
-* revocationReason - Options: `[keyCompromise, administrativeReason]`. Should be mandatory en the case that the state is revoked.
-* retirementReason - Options: `[expired, revokedKeyCompromise, revokedAdministrativeReason]`. Mandatory en the case that the state is `retired`.
+* revocationReason - Options: `[keyCompromise, administrativeReason]`. Should be mandatory in the case that the state is revoked.
 * ~~**keys** - Certificate's private keys array. It can be more than one to have into account the possibility of Mixed Certificates. Ideally:  `[ {size1, algo1}, {size2, algo2}, …, {sizeN, algoN} ]`. In the future it will be an array of CMDB references.~~
 * **keys** - Certificate's key algorithms and parameters. Tactical approach until we have an inventory of keys. List of possible values in the keys-list document.
 
@@ -31,7 +30,7 @@
 * installedDate
 * availableDate
 * removalDate
-* ~~revocationDate~~
+* revocationDate
 
 ## extended properties
 
