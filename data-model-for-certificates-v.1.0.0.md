@@ -18,19 +18,28 @@
 * certificateEncoding - Options: `[PEM, PKCS#7/P7B, DER, PKCS#12/PFX]`
 * **fingerprintAlgorithm** - Free text, string(50).
 * **fingerPrint** - Certificate's fingerprint - string with variable length, depending on the algorithm used.
-* **state** - Certificate's state. Options: `[pre-operational, operational, retired, suspended, revoked, destroyed]`
+* **state** - Certificate's state. Options: `[pre-operational, operational, retired, suspended, revoked, destroyed]`. 
+    > IMPORTANT: The states defined in CBOM 1.7 are: `[pre-activation, active, deactivated, suspended, revoked, destroyed]`. TO-DO: change our definition to match this naming.
 * revocationReason - Options: `[keyCompromise, administrativeReason]`. Should be mandatory in the case that the state is revoked.
 * ~~**keys** - Certificate's private keys array. It can be more than one to have into account the possibility of Mixed Certificates. Ideally:  `[ {size1, algo1}, {size2, algo2}, …, {sizeN, algoN} ]`. In the future it will be an array of CMDB references.~~
 * **keys** - Certificate's key algorithms and parameters. Tactical approach until we have an inventory of keys. List of possible values in the keys-list document.
 
-## management dates (these ones are exactly as they are in CMDB now)
+## management dates
 
-* receivedDate
-* updatedDate
-* installedDate
-* availableDate
-* removalDate
-* revocationDate
+Mapping of management dates as they are in CMDB now, and the ones defined in CBOM 1.7:
+
+current definition | CBOM 1.7 mapping
+--- | ---
+receivedDate | creationDate
+updatedDate | -
+installedDate | -
+availableDate | activationDate
+removalDate | deactivationDate
+revocationDate | revokationDate
+
+Dates defined in CBOM 1.7 into `certificateProperties` object are the following: `[creationDate, activationDate, deactivationDate, revokationDate, destructionDate]`
+
+There's no mapping of `updatedDate` and `installedDate` into CBOM  1.7 and we don't define a `destructionDate` in our model. So, CBOM will be partially usable with this regard.
 
 ## extended properties
 

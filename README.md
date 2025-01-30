@@ -34,7 +34,7 @@ We have created the santander-cryptographic-properties schema to do the extra va
 
 You can check the agreed final model [here](data-model-for-certificates-v.1.0.0.md).
 
-## CBOM Comments
+## CBOM 1.6 Comments
 
 * You can generate an **empty record**. We think that the minimum CBOM object should be a kind of asset, and depending on that, validate the proper minimum related fields.
 * CBOM does not define a current **state** of the certificates. We have defined a state field to track it, in agreement with Santander CMDB owner. We think this property should be included in CBOM standard definition.
@@ -46,23 +46,24 @@ You can check the agreed final model [here](data-model-for-certificates-v.1.0.0.
 * For the **owner**, we have used the new fields publisher and group (defined in CycloneDX 1.6) that can serve this purpose, but we still think there's space for an "owner" field, which would be more precise semantically.
 * We have defined the **keys** in the components array instead of using CBOM fields in order to be able to define several keys so we can track hybrid certificates in the future. This is not incompatible with current standard (non-hybrid) certificates, because the array has a minimum of one value, with no maximum. The keys objects are kept with a minimum set of properties at the moment (keyIdentifier, keySize, and algorithm properties), because we are focusing on tracking certs for now. - **Note:** This is the ideal, target, scenario. For now our definition has changed to a single list of keys+sizes with multiple options due to CMDB limitations.
 * We have defined the **fingerprint** information using the hash object defined by CBOM, but that object does not have the possibility of adding a name or a label to it, so you don't know that information corresponds to the fingerprint at all.
-* We have defined several **administrative dates** as external properties that we agree they should be kept out of the standard, because there's no standard spec or recommendation to map those fields, but we still need them.
+* We have defined several **administrative dates** as external properties that we agreed to be left out of the standard, because there's no standard spec or recommendation. However, some of the proposed dates were finally added into CBOM 1.7 in [commit cdf825049be776acc3acf6ad5fec8c942d78e1b8](https://github.com/CycloneDX/specification/pull/543/commits/cdf825049be776acc3acf6ad5fec8c942d78e1b8), into `certificateProperties` object.
 * We have defined almost all the **x509v3 extended properties** as non required extended properties.
 
 ## Requests for IBM / CycloneDX
 
+The following inclussions in CBOM definition for certificates were requested:
+
 Request | Status
 --- | ---
-Include certificate **state** in CBOM definition for certificates. | Under Analysis
+**certificateState** | Included in v.1.7 in `certificateProperties` object - [commit cdf825049be776acc3acf6ad5fec8c942d78e1b8](https://github.com/CycloneDX/specification/pull/543/commits/cdf825049be776acc3acf6ad5fec8c942d78e1b8)
 Include **revocationReason** in CBOM definition for certificates. | Under analysis. Depends on `state` inclussion
-Include **serialNumber** in CBOM deinition for certificates. | Included in v.1.7
-Add the possibility of a new property **name/label for hashes** to define what the hash is representing. | Included in v.1.7
+**serialNumber** | Included in v.1.7 in `certificateProperties` object - [commit 0e9eb6a1a3c553583c60e3551dcffb0e8f22ec41](https://github.com/CycloneDX/specification/pull/543/commits/0e9eb6a1a3c553583c60e3551dcffb0e8f22ec41)
+**fingerPrint**  | Included in v.1.7 in `certificateProperties` object, and in `relatedCryptoMaterial` object as well - [commit 0e9eb6a1a3c553583c60e3551dcffb0e8f22ec41](https://github.com/CycloneDX/specification/pull/543/commits/0e9eb6a1a3c553583c60e3551dcffb0e8f22ec41)
+Add the possibility of a new property **name/label for hashes** to define what the hash is representing. | Included in v.1.7 (¿?) - Not necessary because the `fingerprint` property was added.
 Add the possibility of defining the **extended properties value as an object** in CBOM definition. | Rejected
-Array to manage a list of keys | TBR
-Array to manage a list of signatures | TBR
-Add an object inside certProperties to define **x509v3 extended properties** | TBR
-
-**Note: If many fields are being added to the extended properties block, it may indicate that the model is missing some important information.**
+Array to manage a list of keys | The `subjectPublicKeyRef` has been depreprecated in [commit 0502e1103f58187e5efb2d26fee8200a25b19f0d](https://github.com/CycloneDX/specification/pull/543/commits/0502e1103f58187e5efb2d26fee8200a25b19f0d)
+Array to manage a list of signatures | The `signatureAlgorithmRef` has been deprecated in [commit 0502e1103f58187e5efb2d26fee8200a25b19f0d](https://github.com/CycloneDX/specification/pull/543/commits/0502e1103f58187e5efb2d26fee8200a25b19f0d)
+Add an object inside certProperties to define **x509v3 extended properties** | Requested. Pending decission.
 
 ## To-Do
 
