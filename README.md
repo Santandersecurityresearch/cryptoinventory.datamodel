@@ -55,14 +55,14 @@ The following inclussions in CBOM definition for certificates were requested:
 
 Request | Status
 --- | ---
-**certificateState** | Included in v.1.7 in `certificateProperties` object - [commit cdf825](https://github.com/CycloneDX/specification/pull/543/commits/cdf825049be776acc3acf6ad5fec8c942d78e1b8)
-**revocationReason** | Included a general `reason` property in v.1.7 in [commit 8c6bb28](https://github.com/n1ckl0sk0rtge/specification/commit/8c6bb2844d4b9e63d5ddf9ddde35e8df918a9345)
-**serialNumber** | Included in v.1.7 in `certificateProperties` object - [commit 0e9eb6](https://github.com/CycloneDX/specification/pull/543/commits/0e9eb6a1a3c553583c60e3551dcffb0e8f22ec41)
-**fingerPrint**  | Included in v.1.7 in `certificateProperties` object, and in `relatedCryptoMaterial` object as well - [commit 0e9eb6](https://github.com/CycloneDX/specification/pull/543/commits/0e9eb6a1a3c553583c60e3551dcffb0e8f22ec41)
+**certificateState** | Included in v.1.7 in `certificateProperties` object - [commit 165669016cb2f8bdd91d410e7d560e0985be37ff](https://github.com/CycloneDX/specification/pull/615/commits/165669016cb2f8bdd91d410e7d560e0985be37ff)
+**revocationReason** | Included a general `reason` property in v.1.7 in [commit 165669016cb2f8bdd91d410e7d560e0985be37ff](https://github.com/CycloneDX/specification/pull/615/commits/165669016cb2f8bdd91d410e7d560e0985be37ff)
+**serialNumber** | Included in v.1.7 in `certificateProperties` object - [commit 165669016cb2f8bdd91d410e7d560e0985be37ff](https://github.com/CycloneDX/specification/pull/615/commits/165669016cb2f8bdd91d410e7d560e0985be37ff)
+**fingerPrint**  | Included in v.1.7 in `certificateProperties` object, and in `relatedCryptoMaterial` object as well - [commit 165669016cb2f8bdd91d410e7d560e0985be37ff](https://github.com/CycloneDX/specification/pull/615/commits/165669016cb2f8bdd91d410e7d560e0985be37ff)
 Add the possibility of a new property **name/label for hashes** to define what the hash is representing. | Not included in v.1.7 (under review) - Not necessary because the `fingerprint` property was added.
 Add the possibility of defining the **extended properties value as an object** in CBOM definition. | Rejected
-Array to manage a list of keys | The `subjectPublicKeyRef` has been depreprecated in [commit 0502e1](https://github.com/CycloneDX/specification/pull/543/commits/0502e1103f58187e5efb2d26fee8200a25b19f0d), and it was added an array of bom-refs called `relatedCryptographicAssets` in [commit 8c6bb28](https://github.com/n1ckl0sk0rtge/specification/commit/8c6bb2844d4b9e63d5ddf9ddde35e8df918a9345), where a list of related keys can be added.
-Array to manage a list of signatures | The `signatureAlgorithmRef` has been deprecated in [commit 0502e1](https://github.com/CycloneDX/specification/pull/543/commits/0502e1103f58187e5efb2d26fee8200a25b19f0d), and it was added an array of bom-refs called `relatedCryptographicAssets` in [commit 8c6bb28](https://github.com/n1ckl0sk0rtge/specification/commit/8c6bb2844d4b9e63d5ddf9ddde35e8df918a9345), where a list of related signatures can be added.
+Array to manage a list of keys | The `subjectPublicKeyRef` has been depreprecated and it was added an array of bom-refs called `relatedCryptographicAssets` in [commit 165669016cb2f8bdd91d410e7d560e0985be37ff](https://github.com/CycloneDX/specification/pull/615/commits/165669016cb2f8bdd91d410e7d560e0985be37ff), where a list of related keys can be added.
+Array to manage a list of signatures | The `signatureAlgorithmRef` has been deprecated and it was added an array of bom-refs called `relatedCryptographicAssets` in [commit 165669016cb2f8bdd91d410e7d560e0985be37ff](https://github.com/CycloneDX/specification/pull/615/commits/165669016cb2f8bdd91d410e7d560e0985be37ff), where a list of related signatures can be added.
 Add an object inside certProperties to define **x509v3 extended properties** | Requested. Under review.
 
 ## To-Do
