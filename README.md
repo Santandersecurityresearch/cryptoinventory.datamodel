@@ -26,7 +26,7 @@ npm install ajv-cli
 ./validate.sh ALL certificate-object-cyclonedx-1.6-tactical-keys.json
 ```
 
-We have created the santander-cryptographic-properties schema to do the extra validations for our own data model.
+We have created the `santander-cryptographic-properties.json` schema to do the extra validations for our own data model.
 
 ***Note: We decided to disregard our initial attempts with Python because of the difficulties found in managing dependent schemas (CBOM's case).***
 
@@ -36,7 +36,7 @@ You can check the agreed final model [here](data-model-for-certificates-v.1.0.0.
 
 ## CBOM 1.6 Comments
 
-* You can generate an **empty record**. We think that the minimum CBOM object should be a kind of asset, and depending on that, validate the proper minimum related fields.
+* You can generate an **empty record**. We think that the minimum CBOM object should be a kind of asset, and depending on that, validate the proper minimum related fields. The file `certificate-object-1.json` is an example that validates under CBOM 1.6, that we think should not validate.
 * CBOM does not define a current **state** of the certificates. We have defined a state field to track it, in agreement with Santander CMDB owner. We think this property should be included in CBOM standard definition.
 * Field **serialNumber** is validated as 32 bytes of data. This is not consistent with the serial number format for a certificate (40 bytes of data). We have defined a new serialNumber field attached to the extended properties of the certificate. We think this property should be included in CBOM standard definition.
 * The model proposes the option to use the block properties to define fields not in the model. We propose renaming this block to **extendedProperties** because "properties" is a reserved word in a JSON schema, so using it for a definition is confusing and can conflict with some JSON schema readers.
