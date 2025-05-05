@@ -28,6 +28,8 @@ npm install ajv-cli
 
 We have created the `santander-cryptographic-properties.json` schema to do the extra validations for our own data model.
 
+The model should also validate file `certificate-object-cyclonedx-1.6-keys-as-components.json`, which should be the approach for a model in the future, once we have keys inventoried (currently not the case).
+
 ***Note: We decided to disregard our initial attempts with Python because of the difficulties found in managing dependent schemas (CBOM's case).***
 
 ## Data Model for certificates - v.1.0.0
